@@ -38,11 +38,6 @@ p > span {
   font-weight: bold;
 }
 
-/* p > br:nth-of-type(2) {
-  display: inline-block;
-  margin-bottom: 1rem
-} */
-
 p > br:not(:nth-child(3)) {
   display: none
 }
