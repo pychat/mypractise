@@ -1,0 +1,13 @@
+h1 {
+  line-height: 200%;
+}
+h2 {
+  line-height: 200%;
+}
+p > span {
+  font-weight: bold;
+}
+p > br:nth-of-type(2) {
+  display: inline-block;
+  margin-bottom: 1rem
+}
