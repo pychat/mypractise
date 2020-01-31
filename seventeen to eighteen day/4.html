@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <table id="table">
+    </table>
+  </body>
+  <script>
+    let r = 1
+    while (r < 10) {
+      let n = 1
+      let node = document.createElement('TR')
+      let tr = document.getElementById('table').appendChild(node)
+      while (n < 10) {
+        let node = document.createElement('TD')
+        let td = tr.appendChild(node)
+        td.innerHTML = r + '*' + n + '=' + r*n
+        n++
+      }
+      r++
+    }
+    document.getElementById('table').border = '1px'
+  </script>
+</html>
