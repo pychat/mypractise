@@ -1,0 +1,155 @@
+html {
+  width: 100%
+}
+
+body {
+  margin: 0
+}
+
+#first {
+  position: relative;
+  padding-top: 1px
+}
+
+#first > img {
+  width : 100%;
+  max-height: 100vh;
+}
+
+#first > div {
+  position: absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom: 0
+}
+
+#first p {
+  color: white;
+  text-align: center
+}
+
+#first > div >p:nth-of-type(1) {
+  font-size: 70px;
+}
+
+#first > div > :nth-child(2) {
+  font-family: 'Times New Roman';
+  opacity: 0.6
+}
+
+#first form {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  width: 55vw;
+  margin: 100px auto;
+  padding-top: 40px;
+}
+
+#first form > p:nth-of-type(2) {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3)
+}
+
+#first form > div {
+  margin: 50px auto 70px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#first form input {
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  height: 35px;
+  width: 240px;
+  margin-right: 25px;
+  color: white;
+  padding-left: 10px;
+  font-family: 'YaHei';
+  outline: none
+}
+
+#first button {
+  width: 90px;
+  border-radius: 4px
+}
+
+#first form input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  left: 20px
+}
+
+#second {
+  display: flex;
+  justify-content: center;
+}
+
+#third > img {
+  width: 100%
+}
+
+#forth {
+  display: flex;
+  justify-content: center
+}
+
+#fifth {
+ position: relative;
+ display: flex;
+ justify-content: center
+}
+
+#fifth > div:nth-of-type(1) {
+  position: absolute;
+  width: 350px;
+  height: 500px;
+  bottom: 470px;
+  left: 22vw
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#contact > p {
+  margin-top: 30px;
+  margin-bottom: 30px
+}
+
+#contact input {
+  width:250px;
+  height:35px;
+  margin-bottom:15px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+#contact > input:nth-last-child(2) {
+  height: 120px
+}
+
+#contact > button {
+  height:35px;
+  width: 250px;
+  border: 0;
+  border-radius: 3px;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  font-size: 18px;
+  font-family: Courier;
+  margin-bottom: 40px
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width:200%;
+  height: 420px;
+  background-color: rgb(20, 20, 20);
+  z-index: -1
+}
