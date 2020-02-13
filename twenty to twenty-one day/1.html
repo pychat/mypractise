@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <input id="name" type="text">
+    <button id="submit-btn">Submit</button>
+  </body>
+  <script>
+    let txt = document.getElementById('name')
+    document.getElementById('submit-btn').addEventListener('click', function () {
+      console.log(txt.value)
+    })
+    txt.addEventListener('keydown', function (e) {
+      switch (e.code) {
+        case 'Escape':
+          txt.value = ''
+        case 'Enter':
+          console.log(txt.value)
+      }
+    })
+  </script>
+</html>

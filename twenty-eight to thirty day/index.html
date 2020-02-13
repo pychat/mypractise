@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <input id="email-input" type="text">
+      <ul id="email-sug-wrapper" class="email-sug">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net']
+    const input = document.getElementById('email-input')
+    const ul = document.getElementById('email-sug-wrapper')
+    let lis = ul.getElementsByTagName('li')
+    let nowSelectTipIndex = 0
+    let liNum = 0
+    input.addEventListener('input', function (e) {
+        console.log('input')
+        monitorText(input.value)
+    })
+    
+    input.addEventListener('keydown', function (e) {
+      monitorKey(e.code)
+    })
+
+    ul.addEventListener('click', (e) => {
+      // 这次赋值不触发input事件，怀疑是input焦点时赋值可以触发input事件，但focus不起作用
+      input.value = e.target.innerHTML
+      input.focus()
+      ul.style.visibility = 'hidden'
+      reset()
+    })
+
+    function monitorText(text) {
+      if (text.includes(' ')) input.value = text.replace(/\s*/g, '') // 这个赋值操作触发了input事件，但是click li时没触发
+      reset()
+      if (text === '') {
+        ul.style.visibility = 'hidden'
+        return
+      } else if (text.includes('@')) {
+        let liN = 0
+        ul.style.visibility = 'visible'
+        let left = text.split('@')[0]
+        let right = text.split('@')[1]
+        let regexp = new RegExp('^' + right)
+        for (let i =0; i < 5; i++) {
+          lis[i].innerHTML = ''
+        }
+        postfixList.forEach((item, index) => {
+          if(regexp.test(item)) {
+            lis[liN].innerHTML = left + '@' + item
+            liN++
+          }
+        })
+        liNum = liN
+      } else {
+        ul.style.visibility = 'visible'
+        postfixList.forEach((item, index) => {
+          lis[index].innerHTML = text + '@' + item
+        })
+      }
+    }
+
+    function monitorKey(keyCode) {
+      switch (keyCode) {
+        case 'Escape':
+        input.select()
+        break
+        case 'Enter':
+        // 将选中的li内容输入到input中
+          if (nowSelectTipIndex) {
+            input.value = lis[nowSelectTipIndex - 1].innerHTML
+            input.focus()
+            ul.style.visibility = 'hidden'
+            reset()
+          }
+          break
+        case 'ArrowUp':   
+        // 向上移动li的选中光标
+          if(nowSelectTipIndex > 1) {
+            nowSelectTipIndex--
+            liCursor()
+          }
+          break
+        case 'ArrowDown':
+        // 向下移动li的选中光标
+          if (nowSelectTipIndex < liNum) {
+            nowSelectTipIndex++
+            liCursor()
+          }
+          break
+      }
+    }
+
+    function reset() {
+      nowSelectTipIndex = 0
+    }
+
+    function liCursor() {
+      for (let li of lis) {
+        li.style.backgroundColor = 'antiquewhite'
+      }
+      lis[nowSelectTipIndex - 1].style.backgroundColor = 'burlywood'
+    }
+  </script>
+</html>

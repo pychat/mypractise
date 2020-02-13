@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div>
+      <label>String A:
+          <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+      </label>
+      <textarea id="str-a"></textarea>
+      <label>String B:
+          <input id="radio-b" type="radio" name="str-obj" value="b">
+      </label>
+      <textarea id="str-b"></textarea>        
+      <label>Num A：<input id="num-a" type="number" value="0"></label>
+      <label>Num B：<input id="num-b" type="number" value="1"></label>
+    </div>
+    <div id="btns">
+      <button id="btnA">获取当前选中输入的内容长度</button>
+      <button id="btnB">当前选中输入中的第3个字符</button>
+      <button id="btnC">把两个输入框的文字连接在一起输出（concat）</button>
+      <button id="btnD">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+      <button id="btnE">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</butto id="btnA"n>
+      <button id="btnF">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+      <button id="btnG">当前选中输入框的行数</button>
+      <button id="btnH">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+      <button id="btnI">把所选输入框中的内容全部转为大写</button>
+      <button id="btnJ">把所选输入框中的内容全部转为小写</button>
+      <button id="btnK">把所选输入框中内容的半角空格全部去除</button>
+      <button id="btnL">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+    </div>
+    <p id="result"></p>
+  </body>
+  <script>
+    let p = document.getElementById('result')
+    let btns = document.getElementById('btns')
+    let strA = document.getElementById('str-a')
+    let strB = document.getElementById('str-b')
+    let numA = document.getElementById('num-a')
+    let numB = document.getElementById('num-b')
+    btns.addEventListener('click', function (e) {
+      switch (e.target.id) {
+        case 'btnA':
+          a()
+          break
+        case 'btnB':
+          b()
+          break
+        case 'btnC':
+          c()
+          break
+        case 'btnD':
+          d()
+          break
+        case 'btnE':
+          ee()
+          break
+        case 'btnF':
+          ff()
+          break
+        case 'btnG':
+          g()
+          break
+        case 'btnH':
+          h()
+          break
+        case 'btnI':
+          my()
+          break
+        case 'btnJ':
+          j()
+          break
+        case 'btnK':
+          k()
+          break
+        case 'btnL':
+          l()
+          break
+      }
+    })
+
+    // 获得所选的textarea框的值
+    function forcusT() {
+      return document.getElementById('str-' + document.querySelector('input:checked').value).value
+    }
+
+    function a() {
+      p.innerHTML = forcusT().length
+    }
+
+    function b() {
+      p.innerHTML = forcusT()[2]
+    }
+
+    function c() {
+      p.innerHTML = strA.value.concat(strB.value)
+    }
+
+    function d() {
+      p.innerHTML = strA.value.indexOf(strB.value)
+    }
+
+    function ee() {
+      p.innerHTML = strB.value.lastIndexOf(strA.value)
+    }
+
+    function ff() {
+      p.innerHTML = forcusT().slice(Number(numA.value), Number(numB.value))
+    }
+
+    // 将文本包在一个span里，放在html下算span长度px值
+    function spanL(str) {
+      span = document.createElement('span')  
+      span.innerHTML = str
+      document.getElementsByTagName('html')[0].appendChild(span)
+      let l = span.offsetWidth
+      span.style.display = 'none'
+      return l
+    }
+
+    function g() {
+      let textWidth = document.getElementById('str-' + document.querySelector('input:checked').value).offsetWidth
+      let tArray = forcusT().split('\n')
+      let l = 0
+      for (let t of tArray) {
+        l += Math.ceil(spanL(t) / textWidth)
+      }
+      p.innerHTML = l
+    }
+
+    function h() {
+      p.innerHTML = forcusT().substr(Number(numA.value), Number(numB.value))
+    }
+
+    function my() {
+      document.getElementById('str-' + document.querySelector('input:checked').value).value = forcusT().toUpperCase()
+    }
+
+    function j() {
+      document.getElementById('str-' + document.querySelector('input:checked').value).value = forcusT().toLowerCase()
+    }
+
+    function k() {
+      console.log('ok')
+      document.getElementById('str-' + document.querySelector('input:checked').value).value = forcusT().replace(/[\u0020]/g, '')
+    }
+
+    function l() {
+      let otherId = document.querySelector('input:checked').value === 'a' ? 'str-b' : 'str-a'
+      document.getElementById('str-' + document.querySelector('input:checked').value).value = forcusT().replace(/a/g, document.getElementById(otherId).value)
+    }
+  </script>
+</html>

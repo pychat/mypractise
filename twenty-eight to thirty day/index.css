@@ -1,0 +1,17 @@
+#email-sug-wrapper {
+  visibility: hidden;
+  padding: 0;
+  background-color: antiquewhite;
+  width: 150px
+}
+
+#email-sug-wrapper > li{
+  visibility: inherit;
+  list-style-type: none;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+
+#email-sug-wrapper > li:hover {
+  background-color: burlywood;
+}

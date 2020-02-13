@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div>
+      <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+      <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+    </div>
+    <div id="btns">
+      <button id='a'>判断当前选中的输入框输入内容是否为数字</button>
+      <button id='b'>把 A 四舍五入为 B 个小数位数的数字</button>
+      <button id='c'>当前选中数字的绝对值</button>
+      <button id='d'>对当前选中的数字进行上舍入</button>
+      <button id='e'>对当前选中的数字进行下舍入</button>
+      <button id='f'>把当前选中的数字四舍五入为最接近的整数</button>
+      <button id='g'>返回 A 和 B 中的最高值</button>
+      <button id='h'>返回 A 和 B 中的最低值</button>        
+    </div>
+    <p id="result"></p>
+  </body>
+  <script>
+    let p = document.getElementById('result')
+    let aInput = document.getElementById('num-a')
+    let bInput = document.getElementById('num-b')
+    document.getElementById('btns').addEventListener('click', function (e) {
+      switch (e.target.id) {
+        case 'a':
+          a()
+          break
+        case 'b':
+          b()
+          break
+        case 'c':
+          c()
+          break
+        case 'd':
+          d()
+          break
+        case 'e':
+          ee()
+          break
+        case 'f':
+          f()
+          break
+        case 'g':
+          g()
+          break
+        case 'h':
+          h()
+          break
+      }
+    })
+    // 检测数字，形参传入input框value值，不传的检测checked的value值
+    function a(inputv) {
+      numId = inputv === '' ? 'num-' + document.querySelector('input:checked').value : 'num-' + inputv
+      let n = document.getElementById(numId).value
+      p.innerHTML = n === '' ? '当前框为空' : Number.isNaN(Number(n)) ? '不是数字' : '是数字'
+      return p.innerHTML === '是数字' ? true : false
+    }
+
+    function b() {
+      if (a('a') && a('b')) {
+        p.innerHTML = Number(aInput.value).toFixed(Number(bInput.value))
+      }
+    }
+
+    function c() {
+      let inputv = document.querySelector('input:checked').value
+      nId = 'num-' + inputv
+      if(a(inputv)) {
+        p.innerHTML = Math.abs(document.getElementById(nId).value)
+      }
+    }
+
+    function d() {
+      let inputv = document.querySelector('input:checked').value
+      nId = 'num-' + inputv
+      if(a(inputv)) {
+        p.innerHTML = Math.ceil(document.getElementById(nId).value)
+      }
+    }
+
+    function ee() {
+      let inputv = document.querySelector('input:checked').value
+      nId = 'num-' + inputv
+      if(a(inputv)) {
+        p.innerHTML = Math.floor(document.getElementById(nId).value)
+      }
+    }
+
+    function f() {
+      let inputv = document.querySelector('input:checked').value
+      nId = 'num-' + inputv
+      if(a(inputv)) {
+        p.innerHTML = Math.round(document.getElementById(nId).value)
+      }
+    }
+
+    function g() {
+      if (a('a') && a('b')) {
+        p.innerHTML = Number(aInput.value) > Number(bInput.value) ? aInput.value : bInput.value
+      }
+    }
+
+    function h() {
+      if (a('a') && a('b')) {
+        p.innerHTML = Number(aInput.value) < Number(bInput.value) ? aInput.value : bInput.value
+      }
+    }
+  </script>
+</html>
