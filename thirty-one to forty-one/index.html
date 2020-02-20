@@ -1,0 +1,54 @@
+<!DOCTYPE hmtl>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div>
+      <div id="region">
+        <label for="allregion">全选</label>
+        <input type="checkbox" name="region" id="allregion" checked>
+        <label for="north">华北</label>
+        <input type="checkbox" name="region" id="north" value="华北" checked>
+        <label for="east">华东</label>
+        <input type="checkbox" name="region" id="east" value="华东" checked>
+        <label for="south">华南</label>
+        <input type="checkbox" name="region" id="south" value="华南" checked>
+      </div>
+      <div id="product">
+        <label for="allproduct">全选</label>
+        <input type="checkbox" name="product" id="allproduct" checked>
+        <label for="mobile">手机</label>
+        <input type="checkbox" name="product" id="mobile" value="手机" checked>
+        <label for="laptop">笔记本</label>
+        <input type="checkbox" name="product" id="laptop" value="笔记本" checked>
+        <label for="audio">智能音箱</label>
+        <input type="checkbox" name="product" id="audio" value="智能音箱" checked>
+      </div>
+    </div>
+    <table id="table-wrapper">
+      <tr>
+        <th></th>
+        <th></th>
+        <th>1月</th>
+        <th>2月</th>
+        <th>3月</th>
+        <th>4月</th>
+        <th>5月</th>
+        <th>6月</th>
+        <th>7月</th>
+        <th>8月</th>
+        <th>9月</th>
+        <th>10月</th>
+        <th>11月</th>
+        <th>12月</th>
+      </tr>
+    </table>
+    <div id="chart">
+
+    </div>
+  </body>
+  <script src="./checkbox.js"></script>
+  <script src="./dataprocessing.js"></script>
+</html>
