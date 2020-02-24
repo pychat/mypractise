@@ -46,17 +46,10 @@ function selectedData () {
     selectRegions = Array.from(regionDiv.querySelectorAll('input:checked')).map((item) => { return item.value })
   }
   if (!allProduct.checked) {
-    selectProducts = Array.from(productDiv.querySelectorAll('input:checked')).map(item => item.value )
+    selectProducts = Array.from(productDiv.querySelectorAll('input:checked')).map(item => item.value)
   }
-  return results = sourceData.filter((item) => {
+  const results = sourceData.filter((item) => {
     return selectRegions.includes(item.region) && selectProducts.includes(item.product)
   })
+  return results
 }
-
-regionDiv.addEventListener('click', () => {
-  selectedData()
-})
-productDiv.addEventListener('click', () => {
-  selectedData()
-})
-
