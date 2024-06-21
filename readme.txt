@@ -1,1 +1,1 @@
-This is my solution about Baidu institute of Front End Technology practise.
+2024年6月21日，建立质量档案项目。
